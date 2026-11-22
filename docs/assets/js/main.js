@@ -70,15 +70,6 @@
     sections.forEach((s) => navIo.observe(s));
   }
 
-  /* ---------- Card spotlight follows pointer ---------- */
-  document.querySelectorAll('.card').forEach((card) => {
-    card.addEventListener('pointermove', (e) => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty('--mx', `${e.clientX - r.left}px`);
-      card.style.setProperty('--my', `${e.clientY - r.top}px`);
-    });
-  });
-
   /* ---------- Stat counters ---------- */
   const counters = document.querySelectorAll('[data-count]');
   if (!reduceMotion && 'IntersectionObserver' in window) {
@@ -148,12 +139,6 @@
     new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stop())).observe(canvas);
     document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
   }
-
-  /* ---------- Plan buttons prefill the form ---------- */
-  const engagement = document.getElementById('f-engagement');
-  document.querySelectorAll('[data-plan]').forEach((btn) => {
-    btn.addEventListener('click', () => { engagement.value = btn.dataset.plan; });
-  });
 
   /* ---------- Contact form (Formspree) ---------- */
   const form = document.querySelector('[data-contact-form]');
