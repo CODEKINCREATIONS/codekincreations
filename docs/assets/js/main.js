@@ -184,12 +184,6 @@
       const invalid = Object.keys(rules).map((n) => form.elements[n]).filter((el) => !validateField(el));
       if (invalid.length) { invalid[0].focus(); return; }
 
-      if (form.action.includes('YOUR_FORM_ID')) {
-        status.classList.add('is-error');
-        status.textContent = 'Form not connected yet. Add your Formspree form ID in index.html, or email hello@codekincreations.com.';
-        return;
-      }
-
       submit.disabled = true;
       submitLabel.textContent = 'Sending…';
       try {
